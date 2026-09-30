@@ -1,0 +1,585 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClipForge – Pro Video to Animated GIF Studio</title>
+    <meta
+      name="description"
+      content="High-fidelity client-side video to animated GIF converter. Convert MP4, WebM, and MOV to GIF directly in your browser with zero server uploads."
+    />
+
+    <!-- Canonical & Social Metadata -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="ClipForge – Pro Video to Animated GIF Studio" />
+    <meta
+      property="og:description"
+      content="High-fidelity client-side video to animated GIF converter. Convert MP4, WebM, and MOV to GIF directly in your browser with zero server uploads."
+    />
+    <meta property="og:site_name" content="ClipForge" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#121620" />
+
+    <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Schema.org JSON-LD Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "name": "ClipForge Video to GIF Studio",
+            "applicationCategory": "MultimediaApplication",
+            "operatingSystem": "All",
+            "description": "High-fidelity client-side video to animated GIF converter. Convert MP4, WebM, and MOV to GIF directly in your browser with zero server uploads.",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            }
+          }
+        ]
+      }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/gifshot@0.4.5/dist/gifshot.min.js"></script>
+    <script defer src="./script.js"></script>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <!-- Top Navigation Bar -->
+    <header class="app-header" role="banner">
+      <div class="header-inner">
+        <!-- Brand Wordmark -->
+        <a href="/" class="brand-link" id="brand-home-link" aria-label="ClipForge Home">
+          <div class="brand-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" class="brand-svg">
+              <path d="M4 8V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/>
+            </svg>
+          </div>
+          <span class="brand-title">CLIPFORGE</span>
+          <span class="brand-badge">STUDIO</span>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="header-nav" aria-label="Main Navigation">
+          <a href="#upload-card-anchor" class="nav-item active">Converter</a>
+          <a href="#features-section" class="nav-item">Features</a>
+          <a href="#faq-section" class="nav-item">FAQ</a>
+        </nav>
+
+        <!-- Right Side Nav Actions -->
+        <div class="header-actions">
+          <div class="privacy-pill" title="All processing happens on your device">
+            <span class="pulse-dot"></span>
+            <span>100% Client-Side</span>
+          </div>
+
+          <button type="button" class="btn-sample-trigger" id="btn-sample-nav" title="Test with an instant demo video">
+            <svg viewBox="0 0 24 24" fill="currentColor" style="width:13px;height:13px;">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+            <span>Demo Video</span>
+          </button>
+
+          <button type="button" class="btn-theme-toggle" id="btn-theme-toggle" aria-label="Toggle visual theme" title="Toggle theme">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="theme-icon">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main id="main-content" role="main">
+      <!-- ====================================================================
+           PAGE VIEW 1: UPLOAD HOMEPAGE
+           ==================================================================== -->
+      <div id="view-upload" class="app-view">
+        <!-- HERO SECTION -->
+        <section class="hero-stage">
+          <div class="hero-grid-pattern" aria-hidden="true"></div>
+          <div class="hero-container">
+            <div class="hero-center-layout">
+              <h1 class="hero-main-title">MP4 to GIF Converter</h1>
+              <p class="hero-main-desc">
+                ClipForge converts your video files online with complete privacy. Amongst many others, we support MP4, WebM and MOV. You can use the options to control video resolution, quality, framerate and file size.
+              </p>
+              <div class="hero-trust-row">
+                <span class="trust-badge">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="trust-icon">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                  </svg>
+                  Client-Side WebAssembly
+                </span>
+                <span class="trust-sep">·</span>
+                <span class="trust-badge">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="trust-icon">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path>
+                  </svg>
+                  100% Private (No Server Uploads)
+                </span>
+              </div>
+              <!-- Hidden element preserved for script.js compatibility -->
+              <span id="widget-source-label" class="sr-only">MP4</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- FLOATING OVERLAPPING UPLOAD SECTION (EXACT MATCH TO USER REFERENCE) -->
+        <section class="floating-upload-section" id="upload-card-anchor">
+          <div class="floating-container">
+            <!-- Notification Alert Banner -->
+            <div id="alert-banner" class="alert-banner hidden" role="alert" aria-live="polite">
+              <div class="alert-content">
+                <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="8" x2="12" y2="12"></line>
+                  <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+                <span id="alert-message" class="alert-text"></span>
+              </div>
+              <button id="alert-close-btn" class="alert-close-btn" type="button" aria-label="Dismiss alert">&times;</button>
+            </div>
+
+            <!-- The Floating Upload Card (Matches User's Reference Screenshot) -->
+            <div id="drop-zone-card" class="floating-card" tabindex="0" role="button" aria-label="Select file to convert or drop file here">
+              <input
+                type="file"
+                id="file-input"
+                class="sr-only"
+                accept="video/mp4,video/webm,video/quicktime,.mp4,.webm,.mov"
+                aria-label="Choose video file"
+              />
+
+              <!-- Red Cloud with Arrow & Diffuse Glow -->
+              <div class="cloud-upload-symbol" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor" class="red-cloud-svg">
+                  <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/>
+                </svg>
+              </div>
+
+              <h2 class="floating-title">Select your file to convert</h2>
+              <p class="floating-sub">or drop your file here.</p>
+
+              <!-- Red Split Button: [ Select File | v ] -->
+              <div class="split-btn-wrap">
+                <div class="split-btn-group" id="btn-split-select">
+                  <button type="button" class="btn-split-main" id="btn-select-file-main">
+                    <svg viewBox="0 0 24 24" fill="currentColor" class="split-lead-icon" aria-hidden="true">
+                      <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 14h-3v3h-2v-3H8v-2h3v-3h2v3h3v2zm-3-7V3.5L18.5 9H13z"/>
+                    </svg>
+                    <span>Select File</span>
+                  </button>
+                  <div class="split-divider"></div>
+                  <button type="button" class="btn-split-arrow" id="btn-select-file-arrow" aria-label="More upload options" aria-haspopup="true">
+                    <svg viewBox="0 0 20 20" fill="currentColor" class="chevron-svg">
+                      <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/>
+                    </svg>
+                  </button>
+                </div>
+
+                <!-- Split Dropdown Menu -->
+                <div id="split-menu" class="floating-dropdown-menu hidden" role="menu">
+                  <button type="button" class="floating-menu-item" id="menu-opt-computer" role="menuitem">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="menu-icon">
+                      <rect width="20" height="14" x="2" y="3" rx="2"></rect>
+                      <line x1="8" y1="21" x2="16" y2="21"></line>
+                      <line x1="12" y1="17" x2="12" y2="21"></line>
+                    </svg>
+                    From Device
+                  </button>
+                  <button type="button" class="floating-menu-item" id="menu-opt-sample" role="menuitem">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="menu-icon">
+                      <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                    Try Sample Video
+                  </button>
+                </div>
+              </div>
+
+              <!-- Footer Details (Exact 2-Line Layout from Reference Screenshot) -->
+              <div class="floating-footer-block">
+                <label class="auto-convert-row" title="Automatically convert video to GIF immediately when file is loaded">
+                  <input type="checkbox" id="chk-auto-convert" checked />
+                  <span>Auto-convert to GIF upon upload</span>
+                </label>
+                <div class="format-support-text">
+                  Supported: MP4, WebM, MOV &bull; Max 250 MB
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- FEATURES & ARCHITECTURE SECTION -->
+        <section class="features-section" id="features-section">
+          <div class="section-container">
+            <div class="section-header">
+              <span class="section-kicker">Architecture &amp; Security</span>
+              <h2 class="section-title">Built for Speed, Privacy, and Control</h2>
+              <p class="section-desc">Why modern creators prefer browser-native WebAssembly over slow cloud upload converters.</p>
+            </div>
+
+            <div class="features-grid">
+              <div class="feature-card">
+                <div class="feature-icon-wrap">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path>
+                  </svg>
+                </div>
+                <h3 class="feature-heading">100% Client-Side Privacy</h3>
+                <p class="feature-text">
+                  Your video frames never leave your computer. WebAssembly processes audio and video streams in isolated browser memory with zero server logging.
+                </p>
+              </div>
+
+              <div class="feature-card">
+                <div class="feature-icon-wrap">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                </div>
+                <h3 class="feature-heading">Fast Frame Extraction</h3>
+                <p class="feature-text">
+                  Automated frame decoding renders fluid animations quickly while optimizing palette quantization directly on your hardware.
+                </p>
+              </div>
+
+              <div class="feature-card">
+                <div class="feature-icon-wrap">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                  </svg>
+                </div>
+                <h3 class="feature-heading">Discord &amp; Slack Quantization</h3>
+                <p class="feature-text">
+                  Color dithering delivers high visual fidelity while compressing file sizes under standard 8MB and 10MB chat upload thresholds.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- FREQUENTLY ASKED QUESTIONS -->
+        <section class="faq-section" id="faq-section">
+          <div class="section-container">
+            <div class="section-header">
+              <span class="section-kicker">Help &amp; Knowledge</span>
+              <h2 class="section-title">Frequently Asked Questions</h2>
+            </div>
+
+            <div class="faq-accordion-list" id="faq-accordion">
+              <div class="faq-item">
+                <button type="button" class="faq-trigger" aria-expanded="false">
+                  <span>How does the GIF conversion work?</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="faq-chevron">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </button>
+                <div class="faq-answer hidden">
+                  <p>
+                    Select or drop your video file (MP4, WebM, or MOV). It opens a dedicated processing page, extracts the video frames, applies color quantization, and outputs a high-quality animated GIF directly in your browser.
+                  </p>
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <button type="button" class="faq-trigger" aria-expanded="false">
+                  <span>Are my videos uploaded to any external server?</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="faq-chevron">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </button>
+                <div class="faq-answer hidden">
+                  <p>
+                    No. ClipForge processes all video decoding and GIF generation completely inside your browser using client-side WebAssembly. Your files never touch any external server.
+                  </p>
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <button type="button" class="faq-trigger" aria-expanded="false">
+                  <span>How can I copy the animated GIF directly to Discord or Slack?</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="faq-chevron">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </button>
+                <div class="faq-answer hidden">
+                  <p>
+                    You can drag the generated GIF preview directly into Discord, Slack, WhatsApp, or Telegram. Alternatively, click "Copy Animated GIF" or right-click the image and choose "Copy Image".
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- ====================================================================
+           PAGE VIEW 2: DEDICATED PROCESS & PREVIEW PAGE (NO VIDEO PREVIEW)
+           ==================================================================== -->
+      <div id="view-process-preview" class="app-view hidden">
+        <section class="process-preview-section">
+          <div class="process-page-container">
+            <!-- Navigation & Breadcrumb Header -->
+            <div class="process-nav-bar">
+              <div class="process-file-bar">
+                <div class="process-file-tag">
+                  <span class="file-icon-mini" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                      <path d="M14 2v6h6"></path>
+                    </svg>
+                  </span>
+                  <span class="process-file-details">
+                    <span class="file-name-strong" id="proc-file-name">video.mp4</span>
+                    <span class="file-size-dim"><span id="proc-file-size">0 MB</span> · <span id="proc-file-format">MP4 Video</span></span>
+                  </span>
+                </div>
+
+                <div class="process-file-actions">
+                  <div class="process-conversion-flow" aria-label="Convert video to GIF">
+                    <span class="process-source-format" id="proc-input-format">MP4</span>
+                    <span class="process-conversion-arrow" aria-hidden="true">→</span>
+                    <span class="process-target-format">GIF</span>
+                  </div>
+                  <button type="button" class="btn-options-toggle" id="btn-toggle-options" aria-expanded="false" aria-controls="queue-options-panel">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <line x1="4" y1="21" x2="4" y2="14"></line>
+                      <line x1="4" y1="10" x2="4" y2="3"></line>
+                      <line x1="12" y1="21" x2="12" y2="12"></line>
+                      <line x1="12" y1="8" x2="12" y2="3"></line>
+                      <line x1="20" y1="21" x2="20" y2="16"></line>
+                      <line x1="20" y1="12" x2="20" y2="3"></line>
+                      <line x1="2" y1="14" x2="6" y2="14"></line>
+                      <line x1="10" y1="8" x2="14" y2="8"></line>
+                      <line x1="18" y1="16" x2="22" y2="16"></line>
+                    </svg>
+                    <span>Options</span>
+                  </button>
+                  <button type="button" class="btn-remove-file" id="btn-back-upload" title="Remove video" aria-label="Remove video">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <line x1="18" y1="6" x2="6" y2="18"></line>
+                      <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <section id="queue-options-panel" class="conversion-options hidden" aria-labelledby="preview-settings-heading">
+              <div class="conversion-options-heading">
+                <h2 id="preview-settings-heading">Preview &amp; Conversion Settings</h2>
+                <span id="timeline-clip-val">Clip: 0.00s</span>
+              </div>
+
+              <div class="conversion-options-grid">
+                <div class="source-preview-column">
+                  <video id="video-player" class="source-video-preview" playsinline preload="metadata" controls aria-label="Preview source video"></video>
+
+                  <div class="trim-timeline" id="timeline-track-wrap" aria-hidden="true">
+                    <div id="timeline-range-highlight"></div>
+                    <div id="timeline-playhead"></div>
+                  </div>
+
+                  <div class="trim-range-controls">
+                    <label>Start point <input type="range" id="slider-start" min="0" max="100" step="0.05" value="0" /><span id="timeline-start-val">0.00s</span></label>
+                    <label>End point <input type="range" id="slider-end" min="0" max="100" step="0.05" value="100" /><span id="timeline-end-val">0.00s</span></label>
+                  </div>
+
+                  <div class="trim-time-fields">
+                    <label>Start time
+                      <span class="trim-time-entry">
+                        <input type="text" id="input-start-time" inputmode="decimal" value="00:00.00" />
+                        <button type="button" id="btn-set-start-cur">Set to playhead</button>
+                      </span>
+                    </label>
+                    <label>End time
+                      <span class="trim-time-entry">
+                        <input type="text" id="input-end-time" inputmode="decimal" value="00:00.00" />
+                        <button type="button" id="btn-set-end-cur">Set to playhead</button>
+                      </span>
+                    </label>
+                  </div>
+                  <div id="time-error" class="trim-time-error hidden" role="alert"></div>
+                  <div class="trim-action-row">
+                    <button type="button" id="btn-preview-clip">Preview selection</button>
+                    <button type="button" id="btn-reset-trim">Use full video</button>
+                  </div>
+                </div>
+
+                <div class="render-options-column">
+                  <fieldset class="setting-group">
+                    <legend>Frame rate</legend>
+                    <div class="setting-segmented" role="group" aria-label="GIF frame rate">
+                      <button type="button" data-fps="10" aria-pressed="false">10</button>
+                      <button type="button" data-fps="12" aria-pressed="false">12</button>
+                      <button type="button" data-fps="15" class="active" aria-pressed="true">15</button>
+                      <button type="button" data-fps="20" aria-pressed="false">20</button>
+                      <button type="button" data-fps="24" aria-pressed="false">24</button>
+                      <button type="button" data-fps="30" aria-pressed="false">30</button>
+                    </div>
+                    <span class="setting-unit">FPS</span>
+                  </fieldset>
+
+                  <fieldset class="setting-group">
+                    <legend>Output width</legend>
+                    <div class="setting-segmented" role="group" aria-label="GIF output width">
+                      <button type="button" data-width="240" aria-pressed="false">240</button>
+                      <button type="button" data-width="360" class="active" aria-pressed="true">360</button>
+                      <button type="button" data-width="480" aria-pressed="false">480</button>
+                      <button type="button" data-width="640" aria-pressed="false">640</button>
+                      <button type="button" data-width="original" aria-pressed="false">Original</button>
+                    </div>
+                    <span class="setting-unit" id="output-resolution-hint"></span>
+                  </fieldset>
+
+                  <button type="button" class="btn-regenerate-preview" id="btn-queue-convert">Generate GIF Preview</button>
+                </div>
+              </div>
+            </section>
+
+            <!-- Dedicated Processing & Result Card (Queue Card) -->
+            <div id="queue-card" class="process-studio-card" aria-live="polite">
+              <!-- Active Processing Progress State -->
+              <div id="queue-progress-bar-wrap" class="process-loading-deck">
+                <h2 class="loading-status-heading">Processing your Animated GIF</h2>
+                <p class="loading-status-sub" id="queue-status-text">
+                  Decoding video frames &amp; quantizing palette via WebAssembly...
+                </p>
+
+                <!-- Progress Track -->
+                <div class="loading-track-wrapper">
+                  <div class="loading-track-bar">
+                    <div id="queue-progress-fill" class="loading-track-fill" style="width: 0%"></div>
+                  </div>
+                  <div class="loading-percent-row">
+                    <span class="loading-percent-number" id="queue-percent-text">0%</span>
+                    <button type="button" class="btn-cancel-link" id="btn-queue-cancel">Cancel Process</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Result Preview Showcase State (Shows Converted Animated GIF) -->
+              <div id="queue-result-preview" class="process-result-deck hidden">
+                <div class="result-deck-header">
+                  <div class="result-status-pill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>Animated GIF Ready</span>
+                  </div>
+                  <div class="result-specs-tag" id="result-specs-badge">
+                    0.0 MB · 480 × 360 px · 15 FPS
+                  </div>
+                </div>
+
+                <!-- Animated GIF Preview Stage (NO VIDEO PREVIEW) -->
+                <div class="result-cinema-stage" id="result-image-holder">
+                  <img id="gif-result-img" class="stage-gif-image" alt="Converted Animated GIF" draggable="true" title="Drag directly into Discord, Slack, or Desktop" />
+                  <div class="drag-hint-pill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px;">
+                      <polyline points="5 9 2 12 5 15"></polyline>
+                      <polyline points="9 5 12 2 15 5"></polyline>
+                      <polyline points="15 19 12 22 9 19"></polyline>
+                      <polyline points="19 9 22 12 19 15"></polyline>
+                      <line x1="2" y1="12" x2="22" y2="12"></line>
+                      <line x1="12" y1="2" x2="12" y2="22"></line>
+                    </svg>
+                    <span>Drag &amp; drop directly into Discord, Slack, WhatsApp, or Desktop</span>
+                  </div>
+                </div>
+
+                <!-- Instant Copy Notification Banner -->
+                <div id="copy-notification-banner" class="copy-notification-banner hidden">
+                  <div class="copy-notification-header">
+                    <span class="copy-notification-check">✓</span>
+                    <strong>Animated GIF copied to clipboard!</strong>
+                  </div>
+                  <div class="copy-notification-body">
+                    <span>Ready to paste (Ctrl+V) directly into Google Docs, Gmail, Apple Notes, or Web Chats.</span>
+                    <div class="copy-desktop-note">
+                      💬 <strong>For Discord, WhatsApp, or Telegram desktop:</strong> Drag &amp; drop the GIF above straight into your chat, or right-click the image &rarr; <em>"Copy Image"</em>.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Action Buttons Dock -->
+                <div class="result-action-dock">
+                  <a href="#" class="btn-action-download" id="btn-result-download" download="animation.gif">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                      <polyline points="7 10 12 15 17 10"></polyline>
+                      <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    <span>Download Animated GIF</span>
+                  </a>
+
+                  <button type="button" class="btn-action-copy" id="btn-result-copy">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                    </svg>
+                    <span>Copy Animated GIF</span>
+                  </button>
+
+                  <button type="button" class="btn-action-new" id="btn-result-new">
+                    <span>Convert Another Video</span>
+                  </button>
+                </div>
+
+                <div class="quick-right-click-tip">
+                  💡 Tip: You can also right-click the GIF image above and select <strong>"Copy Image"</strong> to paste the raw animation anywhere.
+                </div>
+              </div>
+            </div>
+
+            <!-- Background metadata and legacy actions used by the converter state -->
+            <div class="sr-only" aria-hidden="true">
+              <span id="queue-file-name">video.mp4</span>
+              <span id="queue-file-size">0 MB</span>
+              <span id="queue-file-duration">00:00</span>
+              <span id="queue-file-dim">0 × 0 px</span>
+              <a href="#" id="btn-queue-download"></a>
+              <button type="button" id="btn-queue-remove"></button>
+              <select id="select-quality">
+                <option value="balanced" selected>Balanced</option>
+              </select>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Studio Footer -->
+    <footer class="studio-footer" role="contentinfo">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span class="footer-logo">CLIPFORGE</span>
+          <span class="footer-desc">Client-Side High-Speed Video to Animated GIF Studio</span>
+        </div>
+        <div class="footer-meta">
+          <span>Runs 100% in your browser</span>
+          <span class="footer-dot">·</span>
+          <span>Zero telemetry</span>
+          <span class="footer-dot">·</span>
+          <span>Free &amp; Open Web Standards</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Application Script -->
+  </body>
+</html>
