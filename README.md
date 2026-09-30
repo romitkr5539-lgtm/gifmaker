@@ -9,7 +9,11 @@ This folder (`romitgif`) contains all static files required to deploy **ClipForg
 - **`index.html`**: Complete web application structure with the custom upload box, processing stage, and animated GIF showcase.
 - **`style.css`**: Complete responsive styles and layout matching the red cloud upload card.
 - **`script.js`**: 100% client-side WebAssembly video-to-GIF conversion engine and UI state controller.
+- **`image-to-gif.html`**, **`image-to-gif.css`**, and **`image-to-gif.js`**: Browser-based image-sequence to GIF tool.
+- **`gif-compressor.html`**, **`gif-compressor.css`**, and **`gif-compressor.js`**: Animated GIF optimizer with frame timing, transparency, and looping retained.
 - **`_headers`**: Cloudflare Pages headers configuring `Cross-Origin-Opener-Policy` and `Cross-Origin-Embedder-Policy` for optimal WebAssembly execution.
+
+The image converter and GIF compressor load their browser libraries from jsDelivr, so those tools require an internet connection to initialize. Files are processed locally and are not uploaded.
 
 ---
 

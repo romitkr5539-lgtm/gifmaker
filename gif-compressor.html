@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GIF Compressor | ClipForge</title>
+    <meta name="description" content="Reduce animated GIF file size in your browser. Choose a color palette and dimensions, then compare and download the compressed animation." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./gif-compressor.css" />
+    <script defer src="https://cdn.jsdelivr.net/npm/gifshot@0.4.5/dist/gifshot.min.js"></script>
+    <script type="module" src="./gif-compressor.js"></script>
+  </head>
+  <body>
+    <header class="app-header" role="banner">
+      <div class="header-inner">
+        <a href="./index.html" class="brand-link" aria-label="ClipForge video converter">
+          <div class="brand-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" class="brand-svg">
+              <path d="M4 8V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              <path d="M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              <polygon points="10 8 16 12 10 16 10 8" fill="currentColor" />
+            </svg>
+          </div>
+          <span class="brand-title">CLIPFORGE</span>
+          <span class="brand-badge">STUDIO</span>
+        </a>
+        <nav class="header-nav" aria-label="Main navigation">
+          <a href="./index.html" class="nav-item">Video to GIF</a>
+          <a href="./image-to-gif.html" class="nav-item">Images to GIF</a>
+          <a href="./gif-compressor.html" class="nav-item active" aria-current="page">GIF Compressor</a>
+        </nav>
+        <div class="header-actions">
+          <div class="privacy-pill" title="All processing happens on your device">
+            <span class="pulse-dot"></span>
+            <span>100% Client-Side</span>
+          </div>
+          <button type="button" class="btn-theme-toggle" id="theme-toggle" aria-label="Toggle visual theme" title="Toggle theme">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="theme-icon">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content" role="main">
+      <div id="compress-upload-view" class="app-view">
+        <section class="hero-stage">
+          <div class="hero-grid-pattern" aria-hidden="true"></div>
+          <div class="hero-container">
+            <div class="hero-center-layout">
+              <h1 class="hero-main-title">GIF Compressor</h1>
+              <p class="hero-main-desc">Shrink animated GIFs by reducing dimensions or palette size. Your animation stays on this device.</p>
+              <div class="hero-trust-row">
+                <span class="trust-badge">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="trust-icon">
+                    <path d="m4 12 5 5L20 6"></path>
+                  </svg>
+                  Animation Preserved
+                </span>
+                <span class="trust-sep">·</span>
+                <span class="trust-badge">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="trust-icon">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path>
+                  </svg>
+                  100% Private
+                </span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="floating-upload-section" id="compress-upload-anchor">
+          <div class="floating-container compress-upload-container">
+            <div id="upload-alert" class="alert-banner compress-alert hidden" role="alert" aria-live="polite"></div>
+            <div id="gif-drop-zone" class="floating-card gif-drop-zone" role="group" aria-label="Choose or drop an animated GIF">
+              <input id="gif-file-input" class="sr-only" type="file" accept="image/gif,.gif" aria-label="Choose animated GIF" />
+              <div class="cloud-upload-symbol compress-upload-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor" class="red-cloud-svg">
+                  <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z" />
+                </svg>
+              </div>
+              <h2 class="floating-title">Drop an animated GIF here</h2>
+              <p class="floating-sub">Choose an animated GIF to reduce its size.</p>
+              <button type="button" class="btn-split-main compress-select-button" id="choose-gif-button">
+                <svg viewBox="0 0 24 24" fill="currentColor" class="split-lead-icon" aria-hidden="true">
+                  <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 14h-3v3h-2v-3H8v-2h3v-3h2v3h3v2zm-3-7V3.5L18.5 9H13z" />
+                </svg>
+                Choose GIF
+              </button>
+              <div class="floating-footer-block compress-upload-footer">
+                <div class="format-support-text">Animated GIF · Processed locally</div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div id="compress-process-view" class="app-view hidden">
+        <section class="process-preview-section">
+          <div class="process-page-container">
+            <div class="process-nav-bar">
+              <div class="process-file-bar">
+                <div class="process-file-tag">
+                  <span class="file-icon-mini" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                      <path d="M14 2v6h6"></path>
+                    </svg>
+                  </span>
+                  <span class="process-file-details">
+                    <span class="file-name-strong" id="source-file-name">animation.gif</span>
+                    <span class="file-size-dim" id="source-file-meta">0 MB</span>
+                  </span>
+                </div>
+                <div class="process-file-actions">
+                  <div class="process-conversion-flow" aria-label="Compress animated GIF">
+                    <span class="process-source-format">GIF</span>
+                    <span class="process-conversion-arrow" aria-hidden="true">→</span>
+                    <span class="process-target-format">GIF</span>
+                  </div>
+                  <button type="button" class="btn-back-upload" id="choose-another-gif-button">Choose another</button>
+                </div>
+              </div>
+            </div>
+
+            <div id="process-alert" class="alert-banner compress-alert hidden" role="alert" aria-live="polite"></div>
+
+            <section class="compress-workbench" aria-label="GIF compression settings">
+              <div class="compress-panel-heading">
+                <div>
+                  <span class="compress-kicker">OPTIMIZATION</span>
+                  <h2>Compression settings</h2>
+                </div>
+                <span id="source-animation-meta" class="compress-metadata">Animated GIF</span>
+              </div>
+
+              <div class="compress-file-summary">
+                <div><span>Original</span><strong id="original-gif-details"></strong></div>
+                <div><span>Compressed</span><strong id="compressed-gif-details">Preparing output...</strong></div>
+              </div>
+
+              <button type="button" id="toggle-custom-options" class="compress-options-toggle" aria-expanded="false" aria-controls="custom-options-panel">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <line x1="4" y1="21" x2="4" y2="14"></line>
+                  <line x1="4" y1="10" x2="4" y2="3"></line>
+                  <line x1="12" y1="21" x2="12" y2="12"></line>
+                  <line x1="12" y1="8" x2="12" y2="3"></line>
+                  <line x1="20" y1="21" x2="20" y2="16"></line>
+                  <line x1="20" y1="12" x2="20" y2="3"></line>
+                  <line x1="2" y1="14" x2="6" y2="14"></line>
+                  <line x1="10" y1="8" x2="14" y2="8"></line>
+                  <line x1="18" y1="16" x2="22" y2="16"></line>
+                </svg>
+                <span>Show custom options</span>
+              </button>
+              <div id="custom-options-panel" class="compress-settings-grid hidden">
+                  <label class="compress-target-field" for="target-kb-input">
+                    <span>Target file size</span>
+                    <span class="compress-target-control"><input id="target-kb-input" type="number" min="1" step="1" value="500" /><span>KB</span></span>
+                  </label>
+                  <label class="compress-setting">
+                    <span>Colors per frame</span>
+                    <select id="palette-size-select">
+                      <option value="256">256 · Best detail</option>
+                      <option value="128" selected>128 · Balanced</option>
+                      <option value="64">64 · Smaller file</option>
+                      <option value="32">32 · Lowest palette</option>
+                    </select>
+                  </label>
+                  <label class="compress-setting">
+                    <span>Output dimensions</span>
+                    <select id="scale-select">
+                      <option value="1" selected>Keep original</option>
+                      <option value="0.75">75% size</option>
+                      <option value="0.5">50% size</option>
+                    </select>
+                  </label>
+                  <p class="compress-note">Compression adjusts palette and dimensions as needed. No GIF preview is shown.</p>
+              </div>
+
+              <div id="compress-progress" class="compress-progress hidden" aria-live="polite">
+                <div class="compress-progress-label"><span id="compress-progress-text">Preparing frames</span><span id="compress-progress-percent">0%</span></div>
+                <div class="compress-progress-track"><div id="compress-progress-fill"></div></div>
+              </div>
+
+              <div class="compress-actions">
+                <button type="button" class="image-reset-button" id="reset-compression-button">Start over</button>
+                <button type="button" class="image-create-button" id="compress-gif-button">Compress again</button>
+                <a id="download-compressed-gif" class="image-create-button hidden" href="#" download="compressed.gif">Download GIF</a>
+              </div>
+              <p id="compression-summary" class="compression-summary" aria-live="polite"></p>
+            </section>
+          </div>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

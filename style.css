@@ -2239,6 +2239,30 @@ body.light-theme .app-header {
   gap: 0.5rem;
 }
 
+.alternate-tool-link {
+  margin: -1.25rem auto 2.5rem;
+  padding: 0 1rem;
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+.alternate-tool-link a {
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+
+.alternate-tool-link a span {
+  margin-left: 0.25rem;
+  color: var(--accent-crimson-light);
+  font-weight: 700;
+}
+
+.alternate-tool-link a:hover span {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .footer-dot {
   color: var(--text-dim);
 }

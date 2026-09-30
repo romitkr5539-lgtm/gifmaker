@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Images to GIF | ClipForge</title>
+    <meta name="description" content="Turn a sequence of images into an animated GIF in your browser. Arrange frames, choose speed and size, and export privately." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./image-to-gif.css" />
+    <script src="https://cdn.jsdelivr.net/npm/gifshot@0.4.5/dist/gifshot.min.js"></script>
+    <script defer src="./image-to-gif.js"></script>
+  </head>
+  <body>
+    <header class="app-header" role="banner">
+      <div class="header-inner">
+        <a href="./index.html" class="brand-link" aria-label="ClipForge video converter">
+          <div class="brand-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" class="brand-svg">
+              <path d="M4 8V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              <polygon points="10 8 16 12 10 16" fill="currentColor" />
+            </svg>
+          </div>
+          <span class="brand-title">CLIPFORGE</span>
+          <span class="brand-badge">STUDIO</span>
+        </a>
+        <nav class="header-nav" aria-label="Main navigation">
+          <a href="./index.html" class="nav-item">Video to GIF</a>
+          <a href="./image-to-gif.html" class="nav-item active" aria-current="page">Images to GIF</a>
+          <a href="./gif-compressor.html" class="nav-item">GIF Compressor</a>
+        </nav>
+        <div class="header-actions">
+          <div class="privacy-pill" title="All processing happens on your device">
+            <span class="pulse-dot"></span>
+            <span>100% Client-Side</span>
+          </div>
+          <button type="button" class="btn-theme-toggle" id="theme-toggle" aria-label="Toggle visual theme" title="Toggle theme">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="theme-icon">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content" role="main">
+      <div id="image-upload-view" class="app-view">
+      <section class="hero-stage">
+        <div class="hero-grid-pattern" aria-hidden="true"></div>
+        <div class="hero-container">
+          <div class="hero-center-layout">
+            <h1 class="hero-main-title">Images to GIF Converter</h1>
+            <p class="hero-main-desc">Turn a sequence of still images into a looping animation. Arrange frames, choose the pace and output size, then export privately in your browser.</p>
+            <div class="hero-trust-row">
+              <span class="trust-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="trust-icon">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                </svg>
+                Browser-Native GIF Rendering
+              </span>
+              <span class="trust-sep">·</span>
+              <span class="trust-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="trust-icon">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path>
+                </svg>
+                100% Private (No Server Uploads)
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="floating-upload-section" id="image-upload-card-anchor">
+        <div class="floating-container image-upload-container">
+          <div id="image-alert" class="alert-banner image-alert hidden" role="alert" aria-live="polite"></div>
+
+          <div id="image-drop-zone" class="floating-card image-drop-zone" role="group" aria-label="Choose or drop images to make a GIF">
+          <input id="image-file-input" class="sr-only" type="file" accept="image/png,image/jpeg,image/webp,.png,.jpg,.jpeg,.webp" multiple aria-label="Choose image files" />
+            <div class="cloud-upload-symbol image-drop-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor" class="red-cloud-svg">
+                <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z" />
+              </svg>
+            </div>
+            <h2 class="floating-title">Drop your images here</h2>
+            <p class="floating-sub">PNG, JPG, or WebP · Add at least 2 images</p>
+            <button type="button" class="btn-split-main image-select-button" id="choose-images-button">
+              <svg viewBox="0 0 24 24" fill="currentColor" class="split-lead-icon" aria-hidden="true">
+                <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 14h-3v3h-2v-3H8v-2h3v-3h2v3h3v2zm-3-7V3.5L18.5 9H13z" />
+              </svg>
+              Choose Images
+            </button>
+            <div class="floating-footer-block image-drop-footer">
+              <div class="format-support-text">Supported: PNG, JPG, WebP · Up to 30 images · 100 MB total</div>
+            </div>
+          </div>
+        </div>
+      </section>
+      </div>
+
+      <div id="image-process-view" class="app-view hidden">
+        <section class="process-preview-section">
+          <div class="process-page-container">
+            <div class="process-nav-bar">
+              <div class="process-file-bar image-process-file-bar">
+                <div class="process-file-tag">
+                  <span class="file-icon-mini" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                      <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                      <path d="m21 15-5-5L5 21"></path>
+                    </svg>
+                  </span>
+                  <span class="process-file-details">
+                    <span class="file-name-strong" id="image-process-name">Image sequence</span>
+                    <span class="file-size-dim" id="image-process-meta">0 images</span>
+                  </span>
+                </div>
+                <div class="process-file-actions">
+                  <div class="process-conversion-flow" aria-label="Convert images to GIF">
+                    <span class="process-source-format">FRAMES</span>
+                    <span class="process-conversion-arrow" aria-hidden="true">→</span>
+                    <span class="process-target-format">GIF</span>
+                  </div>
+                  <button type="button" class="btn-back-upload" id="back-to-images-button">Back</button>
+                </div>
+              </div>
+            </div>
+
+            <div id="image-process-alert" class="alert-banner image-alert hidden" role="alert" aria-live="polite"></div>
+
+            <section class="image-content-section" aria-label="Image sequence settings and output">
+              <div class="image-content-container">
+        <section id="image-editor" class="image-editor image-workbench hidden" aria-labelledby="frame-order-title">
+          <div class="image-editor-heading">
+            <div>
+              <span class="image-kicker">YOUR SOURCE</span>
+              <h2 id="frame-order-title">Arrange frames</h2>
+            </div>
+            <button type="button" class="image-add-button" id="add-images-button">Add images</button>
+          </div>
+
+          <ol id="image-frame-list" class="image-frame-list" aria-label="GIF frame order"></ol>
+
+          <div class="image-settings">
+            <label class="image-setting">
+              <span>Frame rate</span>
+              <span class="image-setting-control">
+                <select id="frame-rate-select">
+                  <option value="5">5 FPS · Slow</option>
+                  <option value="8">8 FPS</option>
+                  <option value="10" selected>10 FPS · Smooth</option>
+                  <option value="12">12 FPS</option>
+                  <option value="15">15 FPS</option>
+                  <option value="20">20 FPS · Fast</option>
+                </select>
+              </span>
+            </label>
+            <label class="image-setting">
+              <span>Longest edge</span>
+              <span class="image-setting-control">
+                <select id="output-size-select">
+                  <option value="240">240 px · Compact</option>
+                  <option value="360">360 px</option>
+                  <option value="480" selected>480 px · Balanced</option>
+                  <option value="640">640 px · Detailed</option>
+                </select>
+              </span>
+            </label>
+            <div class="image-export-meta" id="image-export-meta">Add images to see animation details.</div>
+          </div>
+
+          <div id="image-progress" class="image-progress hidden" aria-live="polite">
+            <div class="image-progress-copy"><span id="image-progress-label">Preparing frames</span><span id="image-progress-value">0%</span></div>
+            <div class="image-progress-track"><div id="image-progress-fill"></div></div>
+          </div>
+
+          <div class="image-actions">
+            <button type="button" class="image-reset-button" id="clear-images-button">Clear all</button>
+            <button type="button" class="image-create-button" id="create-gif-button">Create GIF</button>
+          </div>
+        </section>
+
+        <section id="image-result" class="image-result hidden" aria-labelledby="image-result-title">
+          <div class="image-result-heading">
+            <div>
+              <span class="image-kicker">RENDER COMPLETE</span>
+              <h2 id="image-result-title">Your animation</h2>
+              <p id="image-result-meta"></p>
+            </div>
+            <a id="download-gif-button" class="image-create-button image-download-button" href="#" download="clipforge-animation.gif">Download GIF</a>
+          </div>
+          <div class="image-result-stage"><img id="gif-preview" alt="Generated animated GIF preview" /></div>
+          <button type="button" class="image-reset-button" id="make-another-button">Make another</button>
+              </div>
+            </section>
+            <p class="image-privacy-note">Your images stay in this browser. Nothing is uploaded.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>
